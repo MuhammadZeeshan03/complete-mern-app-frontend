@@ -1,11 +1,60 @@
-.App {
+.nav-ul li{
+  display: inline-block;
+  padding: 10px;
+
+}
+.footer{
+  position: absolute;
+  bottom: 0;
+  background-color: skyblue;
+  width: 100%;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.register{
+  margin: auto;
+  width: 50%;
 }
+.appbutton{
+  margin: 25px;
+  padding: 10px;
+  width: 150px;
+  background-color: skyblue;
+  border: 1px solid;
+  color: white;
+  cursor:pointer;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+.appbutton:hover{
+  /* margin: 25px;
+  padding: 10px;
+  width: 150px; */
+  background-color: white;
+  color: skyblue;
+ 
+}
+
+.inputBox{
+  display: block;
+  margin: 20px;
+  padding: 7px;
+  width: 300px;
+  border: 1px solid skyblue;
+}
+.nav-ul{
+  padding: 5px;
+  margin: 0px;
+  background-color: skyblue;
+}
+.nav-ul li a{
+color:#fff;
+padding: 5px;
+text-decoration: none;
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
