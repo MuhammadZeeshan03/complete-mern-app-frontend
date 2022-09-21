@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 const Nav = () => {
+  const auth = localStorage.getItem('user')
   return (
     <div>
       <ul className="nav-ul">
@@ -15,14 +16,17 @@ const Nav = () => {
           <Link to="/update"> Update Product</Link>
         </li>
         <li>
-          <Link to="/logout"> logout</Link>
-        </li>
-        <li>
           <Link to="/Profile"> Profile </Link>
         </li>
-        <li>
-          <Link to="/signup"> Signup </Link>
-        </li>
+        {auth ? (
+          <li>
+            <Link to="/logout"> logout</Link>
+          </li>
+        ) : (
+          <li>
+            <Link to="/signup"> Signup </Link>
+          </li>
+        )}
       </ul>
     </div>
   )
