@@ -14,7 +14,22 @@
   margin: auto;
   width: 50%;
 }
+.logo{
+  float: left;
+  width: 45px;
+  top: 20px;
+  margin-top: 15px;
+  padding-left: 10px;
+  border-radius:20px ;
+  -webkit-border-radius:20px ;
+  -moz-border-radius:20px ;
+  -ms-border-radius:20px ;
+  -o-border-radius:20px ;
+}
 
+.nav-right{
+ text-align: right; 
+}
 .login{
 margin-left: 30%; 
 margin-top: 100px;
