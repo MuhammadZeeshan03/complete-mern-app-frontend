@@ -25,7 +25,7 @@ const AddProduct = () => {
         'Content-Type': 'application/json',
       },
     })
-    // result = result.json()
+
     console.log(result)
     if (result.status === 200) {
       alert('Product added')
