@@ -1,12 +1,21 @@
 import { React, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const AddProduct = () => {
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
   const [category, setCategory] = useState('')
   const [company, setCompany] = useState('')
+  const [error, setError] = useState(false)
 
+  const navigate = useNavigate()
   const handleClick = async () => {
+    console.log(name)
+    if (!name || !price || !category || !company) {
+      setError(true)
+      return false
+    }
+
     const user_id = JSON.parse(localStorage.getItem('user')).user_id
 
     let result = await fetch('http://localhost:5000/addproduct', {
@@ -16,8 +25,12 @@ const AddProduct = () => {
         'Content-Type': 'application/json',
       },
     })
-    result = result.json()
+    // result = result.json()
     console.log(result)
+    if (result.status === 200) {
+      alert('Product added')
+      navigate('/')
+    }
   }
   return (
     <div className="product">
@@ -31,6 +44,7 @@ const AddProduct = () => {
           setName(e.target.value)
         }}
       />
+      {error && !name && <span className="error">Enter valid name</span>}
       <input
         type="text "
         value={price}
@@ -40,6 +54,7 @@ const AddProduct = () => {
         }}
         placeholder="Enter Product Price"
       />
+      {error && !price && <span className="error">Enter valid Price</span>}
       <input
         type="text"
         className="inputBox"
@@ -49,6 +64,9 @@ const AddProduct = () => {
           setCategory(e.target.value)
         }}
       />
+      {error && !category && (
+        <span className="error">Enter valid category</span>
+      )}
       <input
         type="text"
         className="inputBox"
@@ -58,7 +76,7 @@ const AddProduct = () => {
           setCompany(e.target.value)
         }}
       />
-
+      {error && !company && <span className="error">Enter valid Company</span>}
       <button onClick={handleClick} className="appbutton" type="button">
         Add Product
       </button>
