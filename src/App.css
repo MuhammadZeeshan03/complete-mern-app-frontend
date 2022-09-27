@@ -25,6 +25,14 @@
   margin-top: 50px;
 }
 
+.search_box{
+width: 400px;
+margin: 20px;
+height: 40px;
+border:1px solid skyblue;
+padding-left: 20px;
+  /* text-align: center; */
+}
 .product-list ul{
   margin:0;
 }
