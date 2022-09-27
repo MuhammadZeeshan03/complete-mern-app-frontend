@@ -24,26 +24,37 @@ const UpdateProduct = () => {
     setCategory(result.category)
     setCompany(result.company)
   }
-  const updateProduct = () => {
+
+  const updateProduct = async () => {
     console.log(param.id)
+    let result = await fetch(`http://localhost:5000/product/${param.id}`, {
+      method: 'PUT',
+      body: JSON.stringify({ name, price, category, company }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+
+    result = await result.json()
+    console.log(result)
+    navigate('/')
   }
 
-  //     const user_id = JSON.parse(localStorage.getItem('user')).user_id
+  const user_id = JSON.parse(localStorage.getItem('user')).user_id
 
-  //     let result =  fetch('http://localhost:5000/addproduct/', {
-  //       method: 'get',
-  //       body: JSON.stringify({ name, price, category, company, user_id }),
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //     })
+  let result = fetch('http://localhost:5000/addproduct/', {
+    method: 'get',
+    body: JSON.stringify({ name, price, category, company, user_id }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
 
-  //     console.log(result)
-  //     if (result.status === 200) {
-  //       alert('Product added')
-  //       navigate('/')
-  //     }
-  //   }
+  console.log(result)
+  if (result.status === 200) {
+    alert('Product added')
+    navigate('/')
+  }
 
   return (
     <div className="product">

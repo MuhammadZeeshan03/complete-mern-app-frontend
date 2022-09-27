@@ -9,6 +9,7 @@ const AddProduct = () => {
   const [error, setError] = useState(false)
 
   const navigate = useNavigate()
+
   const handleClick = async () => {
     console.log(name)
     if (!name || !price || !category || !company) {
@@ -32,6 +33,7 @@ const AddProduct = () => {
       navigate('/')
     }
   }
+
   return (
     <div className="product">
       <h1>add Product</h1>
