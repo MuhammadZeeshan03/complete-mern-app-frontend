@@ -17,7 +17,11 @@ const UpdateProduct = () => {
 
   const getProductDetails = async () => {
     console.log(param)
-    let result = await fetch(`http://localhost:5000/product/${param.id}`)
+    let result = await fetch(`http://localhost:5000/product/${param.id}`, {
+      headers: {
+        authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`,
+      },
+    })
     result = await result.json()
     setName(result.name)
     setPrice(result.price)
@@ -32,6 +36,7 @@ const UpdateProduct = () => {
       body: JSON.stringify({ name, price, category, company }),
       headers: {
         'Content-Type': 'application/json',
+        authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`,
       },
     })
 
@@ -47,6 +52,7 @@ const UpdateProduct = () => {
     body: JSON.stringify({ name, price, category, company, user_id }),
     headers: {
       'Content-Type': 'application/json',
+      authorizations: `bearer ${JSON.parse(localStorage.getItem('token'))}`,
     },
   })
 

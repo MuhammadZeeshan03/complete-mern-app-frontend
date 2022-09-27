@@ -4,13 +4,14 @@ import { Link, useNavigate } from 'react-router-dom'
 function ProductsList() {
   const [products, setProducts] = useState([])
 
-  // const navigate = useNavigate()
   useEffect(() => {
     getProducts()
   }, [])
   const getProducts = async () => {
     let result = await fetch('http://localhost:5000/products', {
-      headers: { authorizations: JSON.parse(localStorage.getItem('token')) },
+      headers: {
+        authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`,
+      },
     })
     result = await result.json()
     setProducts(result)
@@ -19,6 +20,9 @@ function ProductsList() {
   const deleteProduct = async (id) => {
     let result = await fetch(`http://localhost:5000/product/${id}`, {
       method: 'DELETE',
+      headers: {
+        authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`,
+      },
     })
     result = await result.json()
     if (result) {
@@ -30,7 +34,11 @@ function ProductsList() {
     console.log(event.target.value)
     let search = event.target.value
     if (search) {
-      let result = await fetch(`http://localhost:5000/search/${search}`)
+      let result = await fetch(`http://localhost:5000/search/${search}`, {
+        headers: {
+          authorization: `bearer ${JSON.parse(localStorage.getItem('token'))}`,
+        },
+      })
       result = await result.json()
       if (result) {
         setProducts(result)
